@@ -10,14 +10,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+output "namespace_name" {
+  value = module.eventhub_namespace.namespace_name
+}
 
-resource "azurerm_eventhub_namespace" "eventhub_namespace" {
-  name                          = var.namespace_name
-  location                      = var.location
-  resource_group_name           = var.resource_group_name
-  sku                           = var.sku
-  capacity                      = var.capacity
-  public_network_access_enabled = var.public_network_access_enabled
+output "namespace_id" {
+  value = module.eventhub_namespace.namespace_id
+}
 
-  tags = var.tags
+output "public_network_access_enabled" {
+  value = module.eventhub_namespace.public_network_access_enabled
+}
+
+output "resource_group_name" {
+  description = "Resource group name of the managed action group instance"
+  value       = module.resource_group.name
 }

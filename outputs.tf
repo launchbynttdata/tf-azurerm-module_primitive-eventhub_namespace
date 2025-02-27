@@ -9,3 +9,18 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
+output "namespace_id" {
+  description = "The ID of the Event Hub Namespace"
+  value       = azurerm_eventhub_namespace.eventhub_namespace.id
+}
+
+output "namespace_name" {
+  description = "The Name of the Event Hub Namespace"
+  value       = azurerm_eventhub_namespace.eventhub_namespace.name
+}
+
+output "public_network_access_enabled" {
+  description = "Is Public network access enabled?"
+  value       = azurerm_eventhub_namespace.eventhub_namespace.public_network_access_enabled
+}
