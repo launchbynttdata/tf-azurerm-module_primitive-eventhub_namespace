@@ -47,4 +47,6 @@ module "eventhub_namespace" {
   capacity                      = var.capacity
   public_network_access_enabled = var.public_network_access_enabled
   #tags                          = var.tags
+
+  depends_on = [module.resource_group]
 }

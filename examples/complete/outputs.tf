@@ -10,7 +10,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "namespace_name" {
+output "eventhub_namespace_name" {
   value = module.eventhub_namespace.namespace_name
 }
 

@@ -43,7 +43,7 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_namespace_name"></a> [namespace\_name](#output\_namespace\_name) | n/a |
+| <a name="output_eventhub_namespace_name"></a> [eventhub\_namespace\_name](#output\_eventhub\_namespace\_name) | n/a |
 | <a name="output_namespace_id"></a> [namespace\_id](#output\_namespace\_id) | n/a |
 | <a name="output_public_network_access_enabled"></a> [public\_network\_access\_enabled](#output\_public\_network\_access\_enabled) | n/a |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | Resource group name of the managed action group instance |

@@ -1,6 +1,5 @@
-namespace_name                = "test-eventhub-ns"
+namespace_name                = "test-eventhub-ns-001"
 location                      = "East US"
-resource_group_name           = "test-rg"
 sku                           = "Standard"
 capacity                      = 2
 public_network_access_enabled = false
