@@ -103,22 +103,38 @@ variable "instance_resource" {
 }
 
 variable "sku" {
-  description = "Tag to assign to the resource"
+  description = "The sku for the eventhub namespace. Possible values: Basic, Standard, Premium"
   type        = string
+  default     = "Standard"
+
+  validation {
+    condition     = contains(["Basic", "Standard", "Premium"], var.sku)
+    error_message = "The SKU must be of: Basic, Standard, Premium."
+  }
 }
 
 variable "capacity" {
-  type    = number
-  default = 1
+  description = <<EOT
+  The capacity of the Event Hub Namespace:
+  - Basic: 1
+  - Standard: Between 1 and 20
+  - Premium: Between 1 and 4
+  EOT
+  type        = number
+  default     = 1
+
+  validation {
+    condition = (
+      (var.sku == "Basic" && var.capacity == 1) ||
+      (var.sku == "Standard" && var.capacity >= 1 && var.capacity <= 20) ||
+      (var.sku == "Premium" && var.capacity >= 1 && var.capacity <= 4)
+    )
+    error_message = "The capacity must be 1 for Basic, between 1-20 for Standard, or between 1-4 for Premium"
+  }
+
 }
 
 variable "public_network_access_enabled" {
   type    = bool
   default = true
 }
-
-# variable "tags" {
-#   type        = map(string)
-#   description = "(Optional) A mapping of tags to assign to the resource."
-#   default     = {}
-# }
