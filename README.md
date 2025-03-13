@@ -41,4 +41,8 @@ No modules.
 | <a name="output_namespace_id"></a> [namespace\_id](#output\_namespace\_id) | The ID of the Event Hub Namespace |
 | <a name="output_namespace_name"></a> [namespace\_name](#output\_namespace\_name) | The Name of the Event Hub Namespace |
 | <a name="output_public_network_access_enabled"></a> [public\_network\_access\_enabled](#output\_public\_network\_access\_enabled) | Is Public network access enabled? |
+| <a name="output_default_primary_connection_string"></a> [default\_primary\_connection\_string](#output\_default\_primary\_connection\_string) | The primary connection string for the authorization rule RootManageSharedAccessKey |
+| <a name="output_default_primary_key"></a> [default\_primary\_key](#output\_default\_primary\_key) | The primary key for the authorization rule RootManageSharedAccessKey |
+| <a name="output_default_secondary_connection_string"></a> [default\_secondary\_connection\_string](#output\_default\_secondary\_connection\_string) | The secondary connection string for the authorization rule RootManageSharedAccessKey |
+| <a name="output_default_secondary_key"></a> [default\_secondary\_key](#output\_default\_secondary\_key) | The secondary key for the authorization rule RootManageSharedAccessKey |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -11,5 +11,6 @@
 // limitations under the License.
 
 locals {
-  resource_group_name = module.resource_names["resource_group"].standard
+  resource_group_name     = module.resource_names["resource_group"].minimal_random_suffix
+  eventhub_namespace_name = module.resource_names["eventhub_namespace"].minimal_random_suffix
 }
