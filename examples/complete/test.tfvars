@@ -1,4 +1,3 @@
-namespace_name                = "test-eventhub-ns-001"
 location                      = "East US"
 sku                           = "Standard"
 capacity                      = 2

@@ -24,3 +24,27 @@ output "public_network_access_enabled" {
   description = "Is Public network access enabled?"
   value       = azurerm_eventhub_namespace.eventhub_namespace.public_network_access_enabled
 }
+
+output "default_primary_connection_string" {
+  description = "The primary connection string for the authorization rule RootManageSharedAccessKey"
+  value       = azurerm_eventhub_namespace.eventhub_namespace.default_primary_connection_string
+  sensitive   = true
+}
+
+output "default_primary_key" {
+  description = "The primary key for the authorization rule RootManageSharedAccessKey"
+  value       = azurerm_eventhub_namespace.eventhub_namespace.default_primary_key
+  sensitive   = true
+}
+
+output "default_secondary_connection_string" {
+  description = "The secondary connection string for the authorization rule RootManageSharedAccessKey"
+  value       = azurerm_eventhub_namespace.eventhub_namespace.default_secondary_connection_string
+  sensitive   = true
+}
+
+output "default_secondary_key" {
+  description = "The secondary key for the authorization rule RootManageSharedAccessKey"
+  value       = azurerm_eventhub_namespace.eventhub_namespace.default_secondary_key
+  sensitive   = true
+}

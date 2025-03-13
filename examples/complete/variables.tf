@@ -10,10 +10,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-variable "namespace_name" {
-  type = string
-}
-
 variable "location" {
   type = string
 }
@@ -29,6 +25,10 @@ variable "resource_names_map" {
     resource_group = {
       name       = "rg"
       max_length = 90
+    }
+    eventhub_namespace = {
+      name       = "eventhub"
+      max_length = 50
     }
   }
 }
@@ -149,4 +149,10 @@ variable "capacity" {
 variable "public_network_access_enabled" {
   type    = bool
   default = true
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "(Optional) A mapping of tags to assign to the resource."
+  default     = {}
 }
