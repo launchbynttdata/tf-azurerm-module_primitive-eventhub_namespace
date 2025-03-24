@@ -33,20 +33,20 @@ module "resource_group" {
 
   name     = local.resource_group_name
   location = var.region
-  tags = {
-    resource_name = local.resource_group_name
-  }
+
+  tags = merge(var.tags, { resource_name = module.resource_names["resource_group"].standard })
 }
 
 module "eventhub_namespace" {
   source                        = "../.."
-  namespace_name                = var.namespace_name
+  namespace_name                = local.eventhub_namespace_name
   location                      = var.location
   resource_group_name           = module.resource_group.name
   sku                           = var.sku
   capacity                      = var.capacity
   public_network_access_enabled = var.public_network_access_enabled
-  #tags                          = var.tags
+
+  tags = merge(var.tags, { resource_name = module.resource_names["eventhub_namespace"].standard })
 
   depends_on = [module.resource_group]
 }
