@@ -25,6 +25,11 @@ output "public_network_access_enabled" {
   value       = azurerm_eventhub_namespace.eventhub_namespace.public_network_access_enabled
 }
 
+output "trusted_service_access_enabled" {
+  description = "Whether trusted Azure services are allowed by the namespace network rule set"
+  value       = try(azurerm_eventhub_namespace.eventhub_namespace.network_rulesets[0].trusted_service_access_enabled, null)
+}
+
 output "default_primary_connection_string" {
   description = "The primary connection string for the authorization rule RootManageSharedAccessKey"
   value       = azurerm_eventhub_namespace.eventhub_namespace.default_primary_connection_string

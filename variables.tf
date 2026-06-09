@@ -42,6 +42,31 @@ variable "public_network_access_enabled" {
   default     = false
 }
 
+variable "network_rule_set" {
+  description = <<EOT
+  Optional network rule set for the Event Hub Namespace.
+  Use this to restrict public access while still allowing trusted Azure services.
+  EOT
+  type = object({
+    default_action                 = optional(string, "Deny")
+    trusted_service_access_enabled = optional(bool, true)
+    ip_rules = optional(list(object({
+      ip_mask = string
+      action  = optional(string, "Allow")
+    })), [])
+    virtual_network_rules = optional(list(object({
+      subnet_id                                       = string
+      ignore_missing_virtual_network_service_endpoint = optional(bool, false)
+    })), [])
+  })
+  default = null
+
+  validation {
+    condition     = try(var.network_rule_set == null ? true : contains(["Allow", "Deny"], var.network_rule_set.default_action), false)
+    error_message = "network_rule_set.default_action must be either Allow or Deny."
+  }
+}
+
 variable "capacity" {
   description = <<EOT
   The capacity of the Event Hub Namespace:
@@ -53,14 +78,9 @@ variable "capacity" {
   default     = 1
 
   validation {
-    condition = (
-      (var.sku == "Basic" && var.capacity == 1) ||
-      (var.sku == "Standard" && var.capacity >= 1 && var.capacity <= 20) ||
-      (var.sku == "Premium" && var.capacity >= 1 && var.capacity <= 4)
-    )
-    error_message = "The capacity must be 1 for Basic, between 1-20 for Standard, or between 1-4 for Premium"
+    condition     = var.capacity >= 1
+    error_message = "capacity must be greater than or equal to 1."
   }
-
 }
 
 variable "tags" {

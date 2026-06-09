@@ -29,7 +29,7 @@ module "resource_names" {
 
 module "resource_group" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/resource_group/azurerm"
-  version = "~> 1.0"
+  version = "~> 1.2"
 
   name     = local.resource_group_name
   location = var.region
@@ -45,6 +45,7 @@ module "eventhub_namespace" {
   sku                           = var.sku
   capacity                      = var.capacity
   public_network_access_enabled = var.public_network_access_enabled
+  network_rule_set              = var.network_rule_set
 
   tags = merge(var.tags, { resource_name = module.resource_names["eventhub_namespace"].standard })
 

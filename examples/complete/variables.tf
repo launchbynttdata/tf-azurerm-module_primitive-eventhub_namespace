@@ -136,19 +136,31 @@ variable "capacity" {
   default     = 1
 
   validation {
-    condition = (
-      (var.sku == "Basic" && var.capacity == 1) ||
-      (var.sku == "Standard" && var.capacity >= 1 && var.capacity <= 20) ||
-      (var.sku == "Premium" && var.capacity >= 1 && var.capacity <= 4)
-    )
-    error_message = "The capacity must be 1 for Basic, between 1-20 for Standard, or between 1-4 for Premium"
+    condition     = var.capacity >= 1
+    error_message = "capacity must be greater than or equal to 1."
   }
-
 }
 
 variable "public_network_access_enabled" {
   type    = bool
   default = true
+}
+
+variable "network_rule_set" {
+  description = "Optional network rule set for Event Hub Namespace"
+  type = object({
+    default_action                 = optional(string, "Deny")
+    trusted_service_access_enabled = optional(bool, true)
+    ip_rules = optional(list(object({
+      ip_mask = string
+      action  = optional(string, "Allow")
+    })), [])
+    virtual_network_rules = optional(list(object({
+      subnet_id                                       = string
+      ignore_missing_virtual_network_service_endpoint = optional(bool, false)
+    })), [])
+  })
+  default = null
 }
 
 variable "tags" {
