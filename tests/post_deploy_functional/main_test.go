@@ -39,5 +39,5 @@ func TestEventhubNamespace(t *testing.T) {
 		}).
 		Build()
 
-	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestEventhubNamespaceModule)
+	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestComposableEventhubNamespaceModule)
 }
