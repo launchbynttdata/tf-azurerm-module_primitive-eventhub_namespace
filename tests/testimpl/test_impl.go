@@ -38,8 +38,8 @@ func TestComposableEventhubNamespaceModule(t *testing.T, ctx types.TestContext) 
 	}
 
 	t.Run("doesEventhubNamespaceExist", func(t *testing.T) {
-		resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
-		eventhubNamespaceName := terraform.Output(t, ctx.TerratestTerraformOptions(), "eventhub_namespace_name")
+		resourceGroupName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "resource_group_name")
+		eventhubNamespaceName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "eventhub_namespace_name")
 
 		eventhubNamespace, err := armEventhubNamespaceClient.Get(context.Background(), resourceGroupName, eventhubNamespaceName, nil)
 		if err != nil {
